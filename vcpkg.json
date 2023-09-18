@@ -10,6 +10,15 @@
 		"thrift": {
 			"description": "Enable Thrift example",
 			"dependencies": ["thrift"]
+		},
+		"dds": {
+			"description": "Enable DDS example",
+			"dependencies": [
+				{
+					"name": "cyclonedds-cxx",
+					"features": ["idllib"]
+				}
+			]
 		}
 	}
 }
