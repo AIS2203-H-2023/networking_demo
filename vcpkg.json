@@ -1,0 +1,15 @@
+{
+	"dependencies": [
+		"boost-asio"
+	],
+	"features": {
+		"zeromq": {
+			"description": "Enable ZeroMQ example",
+			"dependencies": ["cppzmq"]
+		},
+		"thrift": {
+			"description": "Enable Thrift example",
+			"dependencies": ["thrift"]
+		}
+	}
+}
