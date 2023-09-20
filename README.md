@@ -7,6 +7,7 @@ Tested on Windows with Visual Studio 2022.
 ### Features:
 * UDP
 * TCP/IP
+* WebSockets
 * ZMQ (Jack of all trades)
 * Thrift (RPC framework)
 
@@ -19,7 +20,7 @@ Call CMake with
 -DCMAKE_TOOLCHAIN_FILE=[path to vcpkg]/scripts/buildsystems/vcpkg.cmake
 ```
 
-By default, only UDP and TCP/IP demos are enabled (Boost dependency).
+By default, only UDP, TCP/IP and WS demos are enabled (Boost dependency).
 Add optional features by listing them with: 
 ```
 -DVCPKG_MANIFEST_FEATURES=feature1;feature2

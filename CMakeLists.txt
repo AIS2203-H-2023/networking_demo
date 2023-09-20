@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(networking_demo)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 
 set(generatedSourcesDir ${CMAKE_BINARY_DIR}/generated)
 file(MAKE_DIRECTORY "${generatedSourcesDir}")
@@ -20,6 +20,7 @@ find_package(Thrift CONFIG)
 
 add_subdirectory(tcp)
 add_subdirectory(udp)
+add_subdirectory(ws)
 
 if(cppzmq_FOUND)
     add_subdirectory(zmq)
