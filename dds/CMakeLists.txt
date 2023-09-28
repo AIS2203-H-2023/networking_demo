@@ -1,5 +1,7 @@
 
-set(ddsCppSourcesDir "${generatedSourcesDir}/dds/cpp/helloworld")
+set(ddsCppSourcesDir "${CMAKE_CURRENT_SOURCE_DIR}")
+
+set(CMAKE_CXX_STANDARD 17)
 
 find_program(IDLC_EXECUTABLE NAMES idlc PATHS cyclonedds)
 
@@ -10,7 +12,7 @@ endif ()
 get_filename_component(IDLC_PARENT_DIR "${IDLC_EXECUTABLE}" DIRECTORY)
 
 
-set(ENV{PATH} "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin")
+set(ENV{LD_LIBRARY_PATH} "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib")
 
 # generate cpp sources
 execute_process(
@@ -19,7 +21,12 @@ execute_process(
         "-l" "cxx"
         "-o" "${ddsCppSourcesDir}"
         "${CMAKE_CURRENT_SOURCE_DIR}/HelloWorldData.idl"
+        ERROR_VARIABLE idl_error
+        RESULT_VARIABLE idl_result
 )
+if(${idl_result})
+    message("IDL status ${idl_result}: ${idl_error}")
+endif()
 
 set(generatedSource "${ddsCppSourcesDir}/HelloWorldData.cpp")
 
